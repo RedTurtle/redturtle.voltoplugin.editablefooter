@@ -30,13 +30,10 @@ class FooterColumnsEndpointTest(unittest.TestCase):
         self.api_session.headers.update({"Accept": "application/json"})
         self.api_session.auth = (SITE_OWNER_NAME, SITE_OWNER_PASSWORD)
 
-        self.value = {"data": "<span>foo</span>"}
+        self.value = {"foo": "bar"}
         self.set_record_value(
-            field="column_1_text", value=json.dumps(self.value)
+            field="footer_columns", value=json.dumps(self.value)
         )
-
-        self.set_record_value(field="column_1_title", value="First column")
-        self.set_record_value(field="column_2_title", value="Second column")
 
     def tearDown(self):
         self.api_session.close()
@@ -55,15 +52,9 @@ class FooterColumnsEndpointTest(unittest.TestCase):
             response.headers.get("Content-Type"), "application/json"
         )
 
-    def test_return_only_filled_data(self):
+    def test_return_json_data(self):
 
         response = self.api_session.get("/@footer-columns")
         result = response.json()
 
-        self.assertEqual(len(result), 2)
-        self.assertEqual(result[0]["text"], self.value)
-        self.assertEqual(result[0]["title"], "First column")
-        self.assertEqual(
-            result[1]["text"], {"content-type": "text/html", "data": ""}
-        )
-        self.assertEqual(result[1]["title"], "Second column")
+        self.assertEqual(result, self.value)

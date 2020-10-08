@@ -12,7 +12,7 @@ class EditableFooterForm(controlpanel.RegistryEditForm):
     )
     description = _(
         "editable_footer_settings_help",
-        default="Set infos for four columns in footer.",
+        default="Set infos for columns in footer.",
     )
 
 

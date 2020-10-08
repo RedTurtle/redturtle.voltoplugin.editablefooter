@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-10-05 06:39+0000\n"
+"POT-Creation-Date: 2020-10-08 14:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,72 +14,42 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: redturtle/volto/editablefooter/profiles/default/controlpanel.xml
+#: redturtle/volto_editablefooter/profiles/default/controlpanel.xml
 msgid "Editable footer settings"
 msgstr "Impostazioni footer"
 
-#: redturtle/volto/editablefooter/configure.zcml:28
+#: redturtle/volto_editablefooter/configure.zcml:28
 msgid "Installs the redturtle.volto_editablefooter add-on."
 msgstr "Installa redturtle.volto_editablefooter"
 
-#: redturtle/volto/editablefooter/configure.zcml:37
+#: redturtle/volto_editablefooter/configure.zcml:37
 msgid "Uninstalls the redturtle.volto_editablefooter add-on."
 msgstr "Disinstalla redturtle.volto_editablefooter"
 
-#. Default: "Column 1: text"
-#: redturtle/volto/editablefooter/interfaces.py:24
-msgid "column_1_text_label"
-msgstr "Colonna 1: testo"
-
-#. Default: "Column 1: title"
-#: redturtle/volto/editablefooter/interfaces.py:18
-msgid "column_1_title_label"
-msgstr "Colonna 1: titolo"
-
-#. Default: "Column 2: text"
-#: redturtle/volto/editablefooter/interfaces.py:36
-msgid "column_2_text_label"
-msgstr "Colonna 2: testo"
-
-#. Default: "Column 2: title"
-#: redturtle/volto/editablefooter/interfaces.py:30
-msgid "column_2_title_label"
-msgstr "Colonna 2: titolo"
-
-#. Default: "Column 3: text"
-#: redturtle/volto/editablefooter/interfaces.py:48
-msgid "column_3_text_label"
-msgstr "Colonna 3: testo"
-
-#. Default: "Column 3: title"
-#: redturtle/volto/editablefooter/interfaces.py:42
-msgid "column_3_title_label"
-msgstr "Colonna 3: titolo"
-
-#. Default: "Column 4: text"
-#: redturtle/volto/editablefooter/interfaces.py:60
-msgid "column_4_text_label"
-msgstr "Colonna 4: testo"
-
-#. Default: "Column 4: title"
-#: redturtle/volto/editablefooter/interfaces.py:54
-msgid "column_4_title_label"
-msgstr "Colonna 4: titolo"
-
-#. Default: "Set infos for four columns in footer."
-#: redturtle/volto/editablefooter/browser/controlpanel.py:13
+#. Default: "Set infos for columns in footer."
+#: redturtle/volto_editablefooter/browser/controlpanel.py:13
 msgid "editable_footer_settings_help"
-msgstr "Imposta i dati per le quattro colonne del footer."
+msgstr "Imposta i dati per le colonne del footer."
 
 #. Default: "Editable Footer Settings"
-#: redturtle/volto/editablefooter/browser/controlpanel.py:10
+#: redturtle/volto_editablefooter/browser/controlpanel.py:10
 msgid "editable_footer_settings_label"
 msgstr "Impostazioni footer"
 
-#: redturtle/volto/editablefooter/configure.zcml:28
+#. Default: "Set a list of custom columns for the footer. You can have different sets for each portal's languages."
+#: redturtle/volto_editablefooter/interfaces.py:15
+msgid "footer_columns_help"
+msgstr "Configura una serie di colonne per il footer. Puoi creare differenti impostazioni per le varie lingue del sito."
+
+#. Default: "Footer columns"
+#: redturtle/volto_editablefooter/interfaces.py:14
+msgid "footer_columns_label"
+msgstr "Colonne footer"
+
+#: redturtle/volto_editablefooter/configure.zcml:28
 msgid "redturtle.volto_editablefooter"
 msgstr ""
 
-#: redturtle/volto/editablefooter/configure.zcml:37
+#: redturtle/volto_editablefooter/configure.zcml:37
 msgid "redturtle.volto_editablefooter (uninstall)"
 msgstr ""

@@ -15,12 +15,7 @@ class EditableFooterControlpanelSerializeToJson(ControlpanelSerializeToJson):
         json_data = super(
             EditableFooterControlpanelSerializeToJson, self
         ).__call__()
-        for i in range(4):
-            field_id = "column_{}_text".format(i + 1)
-            json_data["data"][field_id] = json.loads(
-                json_data["data"][field_id]
-            )
-        for field, props in json_data["schema"]["properties"].items():
-            if field.endswith("_text"):
-                props["default"] = json.loads(props["default"])
+        conf = json_data["data"].get("footer_columns", "")
+        if conf:
+            json_data["data"]["footer_columns"] = json.loads(conf)
         return json_data

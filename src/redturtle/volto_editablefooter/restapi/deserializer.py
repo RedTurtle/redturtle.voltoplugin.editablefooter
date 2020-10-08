@@ -24,52 +24,24 @@ class EditableFooterControlpanelDeserializeFromJson(
     ControlpanelDeserializeFromJson
 ):
     def __call__(self):
-        data = json_body(self.controlpanel.request)
+        req = json_body(self.controlpanel.request)
         proxy = self.registry.forInterface(
             self.schema, prefix=self.schema_prefix
         )
-        schema_data = {}
         errors = []
-        fake_context = FakeDXContext()
-
-        for name, field in getFields(self.schema).items():
-            field_data = schema_data.setdefault(self.schema, {})
-
-            if name in data:
-                deserializer = queryMultiAdapter(
-                    (field, fake_context, self.request), IFieldDeserializer
-                )
-                try:
-                    value = data[name]
-                    if name.endswith("_text"):
-                        value = json.dumps(value)
-
-                    # Make it sane
-                    value = deserializer(value)
-
-                    # Validate required etc
-                    field.validate(value)
-                    # Set the value.
-                    setattr(proxy, name, value)
-
-                except ValueError as e:
-                    errors.append(
-                        {"message": str(e), "field": name, "error": e}
-                    )
-                except ValidationError as e:
-                    errors.append(
-                        {"message": e.doc(), "field": name, "error": e}
-                    )
-                else:
-                    field_data[name] = value
-        # Validate schemata
-        for schema, field_data in schema_data.items():
-            validator = queryMultiAdapter(
-                (self.context, self.request, None, schema, None),
-                IManagerValidator,
+        data = req.get("footer_columns", {})
+        if not data:
+            errors.append(
+                {"message": "Missing data", "field": "footer_columns"}
             )
-            for error in validator.validate(field_data):
-                errors.append({"error": error, "message": str(error)})
+            raise BadRequest(errors)
+        try:
+            # later we need to do some validations
+            setattr(proxy, "footer_columns", json.dumps(data))
+        except ValueError as e:
+            errors.append(
+                {"message": str(e), "field": "footer_columns", "error": e}
+            )
 
         if errors:
             raise BadRequest(errors)

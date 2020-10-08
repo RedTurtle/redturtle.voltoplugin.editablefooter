@@ -3,14 +3,16 @@
 Volto Editable Footer
 =====================
 
-Add-on that allows to edit title and text for 4 footer columns in Volto.
+Add-on that allows to edit footer columns in Volto.
 
 Features
 --------
 
 - Control panel for plone registry to manage columns configuration.
 - Restapi view that exposes these settings for Volto.
-- Each column is a set of title (textline field) and text (rich text).
+
+This addon only add a registry entry where store some configuration data. You need to provide
+the edit interface in your Volto theme.
 
 Volto endpoint
 --------------
@@ -35,7 +37,6 @@ The response is something similar to this::
         }
     ]
 
-Only columns populated will be returned by this endpoint.
 
 Control panel
 -------------
@@ -48,15 +49,6 @@ Volto integration
 
 To use this product in Volto, your Volto project needs to include a new plugin: **ADDRESS_HERE**
 
-
-You also need to set the right widget in widgets mapping::
-
-    ...
-    column_1_text: WysiwygWidget,
-    column_2_text: WysiwygWidget,
-    column_3_text: WysiwygWidget,
-    column_4_text: WysiwygWidget,
-    ...
 
 Translations
 ------------

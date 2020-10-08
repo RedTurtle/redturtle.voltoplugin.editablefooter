@@ -82,31 +82,31 @@ class EditableFooterServiceDeserializerTest(unittest.TestCase):
         )
         commit()
 
+    def test_set_wrong_data(self):
+        response = self.api_session.patch(
+            self.controlpanel_url, json={"foo": "bar"}
+        )
+
+        self.assertEqual(response.status_code, 400)
+
     def test_deserializer_convert_dict_into_json_string(self):
 
-        data = {
-            "column_1_title": "",
-            "column_1_text": {"data": "<span>foo</span>"},
-        }
-        self.api_session.patch(self.controlpanel_url, json=data)
+        data = {"foo": "", "bar": 2}
+        self.api_session.patch(
+            self.controlpanel_url, json={"footer_columns": data}
+        )
         commit()
-
-        self.assertEqual(self.get_record_value(field="column_1_title"), None)
         self.assertEqual(
-            self.get_record_value(field="column_1_text"),
-            json.dumps(data["column_1_text"]),
+            self.get_record_value(field="footer_columns"), json.dumps(data)
         )
 
     def test_serializer_convert_string_into_json_object(self):
 
-        self.assertEqual(
-            self.get_record_value(field="column_1_text"),
-            '{"content-type": "text/html", "data": ""}',  # default value
-        )
-        value = {"data": "<span>foo</span>"}
-        self.set_record_value(field="column_1_text", value=json.dumps(value))
+        self.assertEqual(self.get_record_value(field="footer_columns"), "")
+        value = {"foo": "bar"}
+        self.set_record_value(field="footer_columns", value=json.dumps(value))
 
         response = self.api_session.get(self.controlpanel_url)
-        result = response.json()["data"]["column_1_text"]
+        result = response.json()["data"]["footer_columns"]
 
         self.assertEquals(result, value)
