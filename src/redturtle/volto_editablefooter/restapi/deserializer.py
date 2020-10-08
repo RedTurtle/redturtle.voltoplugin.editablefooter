@@ -2,18 +2,12 @@
 from plone.restapi.deserializer import json_body
 from plone.restapi.deserializer.controlpanels import (
     ControlpanelDeserializeFromJson,
-    FakeDXContext,
 )
 from plone.restapi.interfaces import IDeserializeFromJson
-from plone.restapi.interfaces import IFieldDeserializer
 from redturtle.volto_editablefooter.interfaces import IEditableFooterSettings
-from z3c.form.interfaces import IManagerValidator
 from zExceptions import BadRequest
 from zope.component import adapter
-from zope.component import queryMultiAdapter
 from zope.interface import implementer
-from zope.schema import getFields
-from zope.schema.interfaces import ValidationError
 
 import json
 
