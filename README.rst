@@ -49,7 +49,7 @@ Volto integration
 
 To use this product in Volto, your Volto project needs to include a new plugin: volto-editablefooter_
 
-_https://github.com/RedTurtle/volto-editablefooter
+.. _volto-editablefooter: https://github.com/RedTurtle/volto-editablefooter
 
 
 Translations
