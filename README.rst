@@ -47,7 +47,9 @@ You can edit settings directly from Volto because the control has been registere
 Volto integration
 -----------------
 
-To use this product in Volto, your Volto project needs to include a new plugin: **ADDRESS_HERE**
+To use this product in Volto, your Volto project needs to include a new plugin: volto-editablefooter_
+
+_https://github.com/RedTurtle/volto-editablefooter
 
 
 Translations
