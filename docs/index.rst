@@ -1,5 +1,5 @@
 ==============================
-redturtle.volto_editablefooter
+redturtle.voltoplugin.editablefooter
 ==============================
 
 User documentation

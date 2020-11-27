@@ -42,7 +42,7 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = u"redturtle.volto_editablefooter"
+project = u"redturtle.voltoplugin.editablefooter"
 copyright = u"RedTurtle Techonolgy (cekk)"
 author = u"RedTurtle Techonolgy (cekk)"
 
@@ -199,7 +199,7 @@ html_static_path = ["_static"]
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = "redturtle.volto_editablefooterdoc"
+htmlhelp_basename = "redturtle.voltoplugin.editablefooterdoc"
 
 # -- Options for LaTeX output ---------------------------------------------
 

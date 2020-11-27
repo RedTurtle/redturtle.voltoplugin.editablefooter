@@ -1,0 +1,29 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:zcml="http://namespaces.zope.org/zcml">
+
+  <include package="plone.restapi"  />
+  
+  <!-- deserializer -->
+  <adapter factory=".deserializer.EditableFooterControlpanelDeserializeFromJson" />
+  
+  <!-- serializer -->
+  <adapter factory=".serializer.EditableFooterControlpanelSerializeToJson" />
+
+  <!-- controlpanel service -->
+  <adapter
+        factory=".controlpanel.EditableFooterControlpanel"
+        provides="redturtle.voltoplugin.editablefooter.interfaces.IEditableFooterSettings"
+        name="editable-footer-settings" />
+
+  <!-- endpoint to get footer data -->
+  <plone:service
+    method="GET"
+    name="@footer-columns"
+    for="Products.CMFCore.interfaces.ISiteRoot"
+    factory=".get.FooterColumns"
+    permission="zope2.View"
+    />
+
+</configure>

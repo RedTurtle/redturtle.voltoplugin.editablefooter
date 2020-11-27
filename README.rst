@@ -61,14 +61,14 @@ This product has been translated into
 Installation
 ------------
 
-Install redturtle.volto_editablefooter by adding it to your buildout::
+Install redturtle.voltoplugin.editablefooter by adding it to your buildout::
 
     [buildout]
 
     ...
 
     eggs =
-        redturtle.volto_editablefooter
+        redturtle.voltoplugin.editablefooter
 
 
 and then running ``bin/buildout``
@@ -77,8 +77,8 @@ and then running ``bin/buildout``
 Contribute
 ----------
 
-- Issue Tracker: https://github.com/RedTurtle/redturtle.volto_editablefooter/issues
-- Source Code: https://github.com/RedTurtle/redturtle.volto_editablefooter
+- Issue Tracker: https://github.com/RedTurtle/redturtle.voltoplugin.editablefooter/issues
+- Source Code: https://github.com/RedTurtle/redturtle.voltoplugin.editablefooter
 
 
 License

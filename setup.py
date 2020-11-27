@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Installer for the redturtle.volto_editablefooter package."""
+"""Installer for the redturtle.voltoplugin.editablefooter package."""
 
 from setuptools import find_packages
 from setuptools import setup
@@ -15,7 +15,7 @@ long_description = "\n\n".join(
 
 
 setup(
-    name="redturtle.volto_editablefooter",
+    name="redturtle.voltoplugin.editablefooter",
     version="1.0a1",
     description="Add-on for Volto to manage four-columns footer",
     long_description=long_description,
@@ -35,16 +35,16 @@ setup(
     keywords="Python Plone",
     author="RedTurtle Techonolgy",
     author_email="sviluppo@redturtle.it",
-    url="https://github.com/collective/redturtle.volto_editablefooter",
+    url="https://github.com/collective/redturtle.voltoplugin.editablefooter",
     project_urls={
-        "PyPI": "https://pypi.python.org/pypi/redturtle.volto_editablefooter",
-        "Source": "https://github.com/collective/redturtle.volto_editablefooter",
-        "Tracker": "https://github.com/collective/redturtle.volto_editablefooter/issues",
-        # 'Documentation': 'https://redturtle.volto_editablefooter.readthedocs.io/en/latest/',
+        "PyPI": "https://pypi.python.org/pypi/redturtle.voltoplugin.editablefooter",
+        "Source": "https://github.com/collective/redturtle.voltoplugin.editablefooter",
+        "Tracker": "https://github.com/collective/redturtle.voltoplugin.editablefooter/issues",
+        # 'Documentation': 'https://redturtle.voltoplugin.editablefooter.readthedocs.io/en/latest/',
     },
     license="GPL version 2",
     packages=find_packages("src", exclude=["ez_setup"]),
-    namespace_packages=["redturtle"],
+    namespace_packages=["redturtle", "redturtle.voltoplugin"],
     package_dir={"": "src"},
     include_package_data=True,
     zip_safe=False,
@@ -71,6 +71,6 @@ setup(
     [z3c.autoinclude.plugin]
     target = plone
     [console_scripts]
-    update_locale = redturtle.volto_editablefooter.locales.update:update_locale
+    update_locale = redturtle.voltoplugin.editablefooter.locales.update:update_locale
     """,
 )
