@@ -5,7 +5,8 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Do not break endpoint if nothing set in registry.
+  [cekk]
 
 
 1.0.0 (2020-12-15)

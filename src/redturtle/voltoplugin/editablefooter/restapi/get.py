@@ -19,4 +19,6 @@ class FooterColumns(Service):
         record = api.portal.get_registry_record(
             "footer_columns", interface=IEditableFooterSettings, default=""
         )
+        if not record:
+            return []
         return json.loads(record)
