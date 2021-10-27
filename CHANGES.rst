@@ -5,8 +5,8 @@ Changelog
 1.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Fix python_requires.
+  [nzambello]
 
 1.1.0 (2021-10-11)
 ------------------
