@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.1.1 (unreleased)
+1.1.1 (2021-10-27)
 ------------------
 
 - Fix python_requires.
