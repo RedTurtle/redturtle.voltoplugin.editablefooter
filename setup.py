@@ -50,7 +50,7 @@ setup(
     python_requires=">=3.6",
     install_requires=[
         "setuptools",
-        "plone.api> =1.8.4",
+        "plone.api >= 1.8.4",
         "plone.restapi",
         "plone.app.dexterity",
     ],
