@@ -5,7 +5,8 @@ Changelog
 1.1.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix requirements
+  [foxtrot-dfm1]
 
 
 1.1.1 (2021-10-27)
