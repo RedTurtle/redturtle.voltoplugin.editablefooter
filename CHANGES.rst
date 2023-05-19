@@ -5,7 +5,8 @@ Changelog
 1.1.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- absolut-ize urls
+  [mamico]
 
 
 1.1.2 (2023-03-17)
