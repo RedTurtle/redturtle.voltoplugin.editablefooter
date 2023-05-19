@@ -24,9 +24,15 @@ class FooterColumns(Service):
         data = json.loads(record)
         portal_url = api.portal.get().absolute_url()
         for el in data or []:
-            for item in el.get("items") or []:
-                if item.get("text") and item.get("text").get("data"):
-                    item["text"]["data"] = item["text"]["data"].replace(
-                        'href="/', f'href="{portal_url}/'
-                    )
+            if isinstance(el, dict):
+                for item in el.get("items") or []:
+                    if (
+                        isinstance(item, dict)
+                        and item.get("text")
+                        and isinstance(item.get("text"), dict)
+                        and item.get("text").get("data")
+                    ):
+                        item["text"]["data"] = item["text"]["data"].replace(
+                            'href="/', f'href="{portal_url}/'
+                        )
         return data

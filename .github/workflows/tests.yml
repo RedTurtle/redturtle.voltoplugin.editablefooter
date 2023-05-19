@@ -36,4 +36,4 @@ jobs:
           bin/code-analysis
       - name: Run tests
         run: |
-          bin/test
+          bin/test-coverage
