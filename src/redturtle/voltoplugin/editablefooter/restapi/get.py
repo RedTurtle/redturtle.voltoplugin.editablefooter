@@ -28,9 +28,9 @@ class FooterColumns(Service):
                 for item in el.get("items") or []:
                     if (
                         isinstance(item, dict)
-                        and item.get("text")
-                        and isinstance(item.get("text"), dict)
-                        and item.get("text").get("data")
+                        and item.get("text")  # noqa: W503
+                        and isinstance(item.get("text"), dict)  # noqa: W503
+                        and item.get("text").get("data")  # noqa: W503
                     ):
                         item["text"]["data"] = item["text"]["data"].replace(
                             'href="/', f'href="{portal_url}/'
