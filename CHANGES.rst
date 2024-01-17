@@ -5,7 +5,8 @@ Changelog
 1.2.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Handle /api (remove it) urls when absolut-ize urls.
+  [cekk]
 
 
 1.2.0 (2024-01-17)

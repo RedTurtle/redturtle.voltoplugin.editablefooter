@@ -48,6 +48,9 @@ class FooterColumns(Service):
 
     def get_portal_url(self):
         portal_url = api.portal.get().absolute_url()
+        # BBB
+        if portal_url.endswith("/api"):
+            portal_url = portal_url[:4]
         if not HAS_PLONE_VOLTO:
             return portal_url
         registry = getUtility(IRegistry)
