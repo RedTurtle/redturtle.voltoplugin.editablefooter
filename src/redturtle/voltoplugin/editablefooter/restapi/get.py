@@ -53,10 +53,9 @@ class FooterColumns(Service):
         registry = getUtility(IRegistry)
         settings = registry.forInterface(IVoltoSettings, prefix="volto", check=False)
         settings_frontend_domain = getattr(settings, "frontend_domain", None)
-        if (
-            settings_frontend_domain
-            and settings_frontend_domain != "http://localhost:3000"
-        ):
+        if not settings_frontend_domain:
+            return portal_url
+        if settings_frontend_domain != "http://localhost:3000":
             portal_url = settings_frontend_domain
         if portal_url.endswith("/"):
             portal_url = portal_url[:-1]
