@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
 from plone import api
+from plone.app.testing import applyProfile
 from plone.app.testing import setRoles
 from plone.app.testing import SITE_OWNER_NAME
 from plone.app.testing import SITE_OWNER_PASSWORD
 from plone.app.testing import TEST_USER_ID
+from plone.registry.interfaces import IRegistry
 from plone.restapi.testing import RelativeSession
+from redturtle.voltoplugin.editablefooter.interfaces import IEditableFooterSettings
 from redturtle.voltoplugin.editablefooter.testing import (
     VOLTO_EDITABLEFOOTER_API_FUNCTIONAL_TESTING,
 )
-from redturtle.voltoplugin.editablefooter.interfaces import (
-    IEditableFooterSettings,
-)
 from transaction import commit
+from zope.component import getUtility
+
 
 import json
 import unittest
@@ -63,4 +65,45 @@ class FooterColumnsEndpointTest(unittest.TestCase):
         self.assertEqual(
             json.dumps(result),
             json.dumps(self.value).replace('href=\\"/', f'href=\\"{self.portal_url}/'),
+        )
+
+
+class FooterColumnsEndpointTestWithPloneVolto(FooterColumnsEndpointTest):
+    layer = VOLTO_EDITABLEFOOTER_API_FUNCTIONAL_TESTING
+
+    def setUp(self):
+        super().setUp()
+        applyProfile(self.portal, "plone.volto:default")
+
+    def test_return_json_data_with_portal_url_if_plone_volto_installed_and_not_configured(
+        self,
+    ):
+        response = self.api_session.get("/@footer-columns")
+        self.assertEqual(response.status_code, 200)
+        result = response.json()
+        # self.value has relative links, but the result should have absolute links
+        self.assertNotEqual(result, self.value)
+        self.assertEqual(
+            json.dumps(result),
+            json.dumps(self.value).replace('href=\\"/', f'href=\\"{self.portal_url}/'),
+        )
+
+    def test_return_json_data_with_frontend_domain_if_set(self):
+        from plone.volto.interfaces import IVoltoSettings
+
+        registry = getUtility(IRegistry)
+        settings = registry.forInterface(IVoltoSettings, prefix="volto", check=False)
+        settings.frontend_domain = "http://foo.org"
+        commit()
+
+        response = self.api_session.get("/@footer-columns")
+        self.assertEqual(response.status_code, 200)
+        result = response.json()
+        # self.value has relative links, but the result should have absolute links
+        self.assertNotEqual(result, self.value)
+        self.assertEqual(
+            json.dumps(result),
+            json.dumps(self.value).replace(
+                'href=\\"/', f'href=\\"{settings.frontend_domain}/'
+            ),
         )
