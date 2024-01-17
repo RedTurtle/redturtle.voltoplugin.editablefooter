@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.1.3 (unreleased)
+1.2.0 (2024-01-17)
 ------------------
 
 - absolut-ize urls
