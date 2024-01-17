@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.2.1 (unreleased)
+1.2.1 (2024-01-17)
 ------------------
 
 - Handle /api (remove it) urls when absolut-ize urls.
