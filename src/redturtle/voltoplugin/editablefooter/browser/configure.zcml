@@ -2,14 +2,15 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:plone="http://namespaces.plone.org/plone"
-    i18n_domain="redturtle.voltoplugin.editablefooter">
+    i18n_domain="redturtle.voltoplugin.editablefooter"
+    >
 
   <browser:page
-      class=".controlpanel.EditableFooter"
-      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-      layer="redturtle.voltoplugin.editablefooter.interfaces.IRedturtleVoltoEditablefooterLayer"
       name="editable-footer-settings"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".controlpanel.EditableFooter"
       permission="cmf.ManagePortal"
-  />
+      layer="redturtle.voltoplugin.editablefooter.interfaces.IRedturtleVoltoEditablefooterLayer"
+      />
 
 </configure>

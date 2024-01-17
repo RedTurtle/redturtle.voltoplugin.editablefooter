@@ -22,6 +22,7 @@ setup(
     # Get more from https://pypi.org/classifiers/
     classifiers=[
         "Environment :: Web Environment",
+        "Development Status :: 5 - Production/Stable",
         "Framework :: Plone",
         "Framework :: Plone :: Addon",
         "Framework :: Plone :: 5.2",
@@ -53,6 +54,7 @@ setup(
         "plone.api >= 1.8.4",
         "plone.restapi",
         "plone.app.dexterity",
+        "plone.volto",
     ],
     extras_require={
         "test": [

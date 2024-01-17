@@ -9,10 +9,10 @@ from plone.testing import z2
 
 import redturtle.voltoplugin.editablefooter
 import plone.restapi
+import plone.volto
 
 
 class VoltoEditableFooterLayer(PloneSandboxLayer):
-
     defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):
@@ -20,6 +20,7 @@ class VoltoEditableFooterLayer(PloneSandboxLayer):
         # The z3c.autoinclude feature is disabled in the Plone fixture base
         # layer.
         self.loadZCML(package=plone.restapi)
+        self.loadZCML(package=plone.volto)
         self.loadZCML(package=redturtle.voltoplugin.editablefooter)
 
     def setUpPloneSite(self, portal):
@@ -42,7 +43,6 @@ VOLTO_EDITABLEFOOTER_FUNCTIONAL_TESTING = FunctionalTesting(
 
 
 class VoltoEditableFooterRestApiLayer(PloneRestApiDXLayer):
-
     defaultBases = (PLONE_APP_CONTENTTYPES_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):
@@ -50,7 +50,7 @@ class VoltoEditableFooterRestApiLayer(PloneRestApiDXLayer):
             app, configurationContext
         )
 
-        self.loadZCML(package=plone.restapi)
+        self.loadZCML(package=plone.volto)
         self.loadZCML(package=redturtle.voltoplugin.editablefooter)
 
     def setUpPloneSite(self, portal):
