@@ -16,28 +16,20 @@ import json
 
 @implementer(IDeserializeFromJson)
 @adapter(IEditableFooterSettings)
-class EditableFooterControlpanelDeserializeFromJson(
-    ControlpanelDeserializeFromJson
-):
+class EditableFooterControlpanelDeserializeFromJson(ControlpanelDeserializeFromJson):
     def __call__(self):
         req = json_body(self.controlpanel.request)
-        proxy = self.registry.forInterface(
-            self.schema, prefix=self.schema_prefix
-        )
+        proxy = self.registry.forInterface(self.schema, prefix=self.schema_prefix)
         errors = []
         data = req.get("footer_columns", {})
         if not data:
-            errors.append(
-                {"message": "Missing data", "field": "footer_columns"}
-            )
+            errors.append({"message": "Missing data", "field": "footer_columns"})
             raise BadRequest(errors)
         try:
             # later we need to do some validations
             setattr(proxy, "footer_columns", json.dumps(data))
         except ValueError as e:
-            errors.append(
-                {"message": str(e), "field": "footer_columns", "error": e}
-            )
+            errors.append({"message": str(e), "field": "footer_columns", "error": e})
 
         if errors:
             raise BadRequest(errors)

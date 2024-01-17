@@ -14,9 +14,7 @@ import json
 @adapter(IEditableFooterSettings)
 class EditableFooterControlpanelSerializeToJson(ControlpanelSerializeToJson):
     def __call__(self):
-        json_data = super(
-            EditableFooterControlpanelSerializeToJson, self
-        ).__call__()
+        json_data = super(EditableFooterControlpanelSerializeToJson, self).__call__()
         conf = json_data["data"].get("footer_columns", "")
         if conf:
             json_data["data"]["footer_columns"] = json.loads(conf)

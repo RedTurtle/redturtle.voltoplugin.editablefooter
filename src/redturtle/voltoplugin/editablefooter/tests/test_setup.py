@@ -32,9 +32,7 @@ class TestSetup(unittest.TestCase):
     def test_product_installed(self):
         """Test if redturtle.voltoplugin.editablefooter is installed."""
         self.assertTrue(
-            self.installer.isProductInstalled(
-                "redturtle.voltoplugin.editablefooter"
-            )
+            self.installer.isProductInstalled("redturtle.voltoplugin.editablefooter")
         )
 
     def test_browserlayer(self):
@@ -44,13 +42,10 @@ class TestSetup(unittest.TestCase):
         )
         from plone.browserlayer import utils
 
-        self.assertIn(
-            IRedturtleVoltoEditablefooterLayer, utils.registered_layers()
-        )
+        self.assertIn(IRedturtleVoltoEditablefooterLayer, utils.registered_layers())
 
 
 class TestUninstall(unittest.TestCase):
-
     layer = VOLTO_EDITABLEFOOTER_INTEGRATION_TESTING
 
     def setUp(self):
@@ -61,17 +56,13 @@ class TestUninstall(unittest.TestCase):
             self.installer = api.portal.get_tool("portal_quickinstaller")
         roles_before = api.user.get_roles(TEST_USER_ID)
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
-        self.installer.uninstallProducts(
-            ["redturtle.voltoplugin.editablefooter"]
-        )
+        self.installer.uninstallProducts(["redturtle.voltoplugin.editablefooter"])
         setRoles(self.portal, TEST_USER_ID, roles_before)
 
     def test_product_uninstalled(self):
         """Test if redturtle.voltoplugin.editablefooter is cleanly uninstalled."""
         self.assertFalse(
-            self.installer.isProductInstalled(
-                "redturtle.voltoplugin.editablefooter"
-            )
+            self.installer.isProductInstalled("redturtle.voltoplugin.editablefooter")
         )
 
     def test_browserlayer_removed(self):
@@ -81,6 +72,4 @@ class TestUninstall(unittest.TestCase):
         )
         from plone.browserlayer import utils
 
-        self.assertNotIn(
-            IRedturtleVoltoEditablefooterLayer, utils.registered_layers()
-        )
+        self.assertNotIn(IRedturtleVoltoEditablefooterLayer, utils.registered_layers())
