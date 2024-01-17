@@ -1,3 +1,4 @@
--c constraints_plone52.txt
+pip
 setuptools
 zc.buildout
+wheel
