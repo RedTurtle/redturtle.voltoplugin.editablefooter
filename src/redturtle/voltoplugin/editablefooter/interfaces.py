@@ -10,6 +10,15 @@ class IRedturtleVoltoEditablefooterLayer(IDefaultBrowserLayer):
 
 
 class IEditableFooterSettings(IControlpanel):
+    footer_top = SourceText(
+        title=_("footer_top_label", default="Footer top"),
+        description=_(
+            "footer_top_help",
+            default="Insert some text that will be shown as first element in the footer, before the columns.",
+        ),
+        required=False,
+        default="",
+    )
     footer_columns = SourceText(
         title=_("footer_columns_label", default="Footer columns"),
         description=_(

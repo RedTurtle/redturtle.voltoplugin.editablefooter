@@ -15,7 +15,8 @@ import json
 class EditableFooterControlpanelSerializeToJson(ControlpanelSerializeToJson):
     def __call__(self):
         json_data = super(EditableFooterControlpanelSerializeToJson, self).__call__()
-        conf = json_data["data"].get("footer_columns", "")
-        if conf:
-            json_data["data"]["footer_columns"] = json.loads(conf)
+        for field in ["footer_columns", "footer_top"]:
+            value = json_data["data"].get(field, "")
+            if value:
+                json_data["data"][field] = json.loads(value)
         return json_data

@@ -21,15 +21,21 @@ class EditableFooterControlpanelDeserializeFromJson(ControlpanelDeserializeFromJ
         req = json_body(self.controlpanel.request)
         proxy = self.registry.forInterface(self.schema, prefix=self.schema_prefix)
         errors = []
-        data = req.get("footer_columns", {})
-        if not data:
+        footer_top = req.get("footer_top", {})
+        footer_columns = req.get("footer_columns", {})
+
+        if not footer_columns:
             errors.append({"message": "Missing data", "field": "footer_columns"})
             raise BadRequest(errors)
         try:
             # later we need to do some validations
-            setattr(proxy, "footer_columns", json.dumps(data))
+            setattr(proxy, "footer_columns", json.dumps(footer_columns))
         except ValueError as e:
             errors.append({"message": str(e), "field": "footer_columns", "error": e})
-
+        try:
+            # later we need to do some validations
+            setattr(proxy, "footer_top", json.dumps(footer_top))
+        except ValueError as e:
+            errors.append({"message": str(e), "field": "footer_top", "error": e})
         if errors:
             raise BadRequest(errors)

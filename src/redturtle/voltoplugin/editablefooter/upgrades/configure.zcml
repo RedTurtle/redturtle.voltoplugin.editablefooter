@@ -1,0 +1,16 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    >
+
+  <genericsetup:upgradeStep
+      title="Add new field in controlpanel"
+      description=""
+      profile="redturtle.voltoplugin.editablefooter:default"
+      source="1000"
+      destination="1001"
+      handler=".upgrades.update_registry"
+      />
+
+
+</configure>

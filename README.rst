@@ -19,23 +19,25 @@ Volto endpoint
 
 Anonymous users can't access registry resources by default with plone.restapi (there is a special permission).
 
-To avoid enabling registry access to everyone, this package exposes a dedicated restapi route with the infos to draw the menu: *@footer-columns*::
+To avoid enabling registry access to everyone, this package exposes a dedicated restapi route with the infos to draw the menu: *@editable-footer-data*::
 
-    > curl -i http://localhost:8080/Plone/@footer-columns -H 'Accept: application/json'
+    > curl -i http://localhost:8080/Plone/@editable-footer-data -H 'Accept: application/json'
 
 
 The response is something similar to this::
-
-    [
-        {
-            'text': {'data': '<span>foo</span>'},
-            'title': 'First column'
-        },
-        {
-            'text': {'content-type': 'text/html', 'data': ''},
-            'title': 'Second column'
-        }
-    ]
+    {
+        "footer_top": {...},
+        "footer_columns": [
+            {
+                'text': {'data': '<span>foo</span>'},
+                'title': 'First column'
+            },
+            {
+                'text': {'content-type': 'text/html', 'data': ''},
+                'title': 'Second column'
+            }
+        ]
+    }
 
 
 Control panel

@@ -16,6 +16,8 @@
 
   <include package=".browser" />
   <include package=".restapi" />
+  <include package=".upgrades" />
+
 
   <include file="permissions.zcml" />
 

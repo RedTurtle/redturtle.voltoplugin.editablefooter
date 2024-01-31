@@ -20,17 +20,20 @@ import json
 
 
 @implementer(IPublishTraverse)
-class FooterColumns(Service):
-    def __init__(self, context, request):
-        super(FooterColumns, self).__init__(context, request)
-
+class EditableFooterGet(Service):
     def reply(self):
-        record = api.portal.get_registry_record(
+        res = {"footer_top": None, "footer_columns": None}
+        footer_top = api.portal.get_registry_record(
+            "footer_top", interface=IEditableFooterSettings, default=""
+        )
+        footer_columns = api.portal.get_registry_record(
             "footer_columns", interface=IEditableFooterSettings, default=""
         )
-        if not record:
-            return []
-        data = json.loads(record)
+        if footer_top:
+            res["footer_top"] = json.loads(footer_top)
+        if not footer_columns:
+            return res
+        data = json.loads(footer_columns)
         portal_url = self.get_portal_url()
         for el in data or []:
             if isinstance(el, dict):
@@ -44,7 +47,8 @@ class FooterColumns(Service):
                         item["text"]["data"] = item["text"]["data"].replace(
                             'href="/', f'href="{portal_url}/'
                         )
-        return data
+        res["footer_columns"] = data
+        return res
 
     def get_portal_url(self):
         portal_url = api.portal.get().absolute_url()
