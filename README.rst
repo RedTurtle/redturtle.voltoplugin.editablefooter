@@ -25,6 +25,7 @@ To avoid enabling registry access to everyone, this package exposes a dedicated 
 
 
 The response is something similar to this::
+
     {
         "footer_top": {...},
         "footer_columns": [
