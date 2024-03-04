@@ -55,19 +55,19 @@ class EditableFooterDataServiceTest(BaseTest):
     layer = VOLTO_EDITABLEFOOTER_API_FUNCTIONAL_TESTING
 
     def test_route_exists(self):
-        response = self.api_session.get("/@editable-footer-data")
+        response = self.api_session.get("/@footer-columns")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.headers.get("Content-Type"), "application/json")
 
     def test_return_data_structure(self):
-        response = self.api_session.get("/@editable-footer-data")
+        response = self.api_session.get("/@footer-columns")
         result = response.json()
 
         self.assertIn("footer_top", result)
         self.assertIn("footer_columns", result)
 
     def test_return_json_data_absolute_links_converted_for_footer_columns(self):
-        response = self.api_session.get("/@editable-footer-data")
+        response = self.api_session.get("/@footer-columns")
         self.assertEqual(response.status_code, 200)
         result = response.json()
         # self.footer_columns_value has relative links, but the result should have absolute links
@@ -90,7 +90,7 @@ class EditableFooterDataServiceTestWithPloneVolto(BaseTest):
     def test_return_json_data_with_portal_url_if_plone_volto_installed_and_not_configured(
         self,
     ):
-        response = self.api_session.get("/@editable-footer-data")
+        response = self.api_session.get("/@footer-columns")
         self.assertEqual(response.status_code, 200)
         result = response.json()
         # self.footer_columns_value has relative links, but the result should have absolute links
@@ -110,7 +110,7 @@ class EditableFooterDataServiceTestWithPloneVolto(BaseTest):
         settings.frontend_domain = "http://foo.org"
         commit()
 
-        response = self.api_session.get("/@editable-footer-data")
+        response = self.api_session.get("/@footer-columns")
         self.assertEqual(response.status_code, 200)
         result = response.json()
         # self.footer_columns_value has relative links, but the result should have absolute links

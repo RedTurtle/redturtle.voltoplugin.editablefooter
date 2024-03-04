@@ -7,8 +7,6 @@ Changelog
 
 - Add footer_top field in settings, to manage a new footer row before columns.
   [cekk]
-- [BREAKING] Rename service endpoint to *@editable-footer-data* and changed its data structure.
-  [cekk]
 
 
 1.2.1 (2024-01-17)
