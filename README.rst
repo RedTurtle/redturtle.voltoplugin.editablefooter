@@ -26,16 +26,19 @@ To avoid enabling registry access to everyone, this package exposes a dedicated 
 
 The response is something similar to this::
 
-    [
-        {
-            'text': {'data': '<span>foo</span>'},
-            'title': 'First column'
-        },
-        {
-            'text': {'content-type': 'text/html', 'data': ''},
-            'title': 'Second column'
-        }
-    ]
+    {
+        "footer_top": {...},
+        "footer_columns": [
+            {
+                'text': {'data': '<span>foo</span>'},
+                'title': 'First column'
+            },
+            {
+                'text': {'content-type': 'text/html', 'data': ''},
+                'title': 'Second column'
+            }
+        ]
+    }
 
 
 Control panel

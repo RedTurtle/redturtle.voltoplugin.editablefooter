@@ -19,22 +19,19 @@ import json
 import unittest
 
 
-class FooterColumnsEndpointTest(unittest.TestCase):
-    layer = VOLTO_EDITABLEFOOTER_API_FUNCTIONAL_TESTING
-
+class BaseTest(unittest.TestCase):
     def setUp(self):
         self.app = self.layer["app"]
         self.portal = self.layer["portal"]
         self.request = self.layer["request"]
         self.portal_url = self.portal.absolute_url()
-        self.controlpanel_url = "/@controlpanels/editable-footer-settings"
         setRoles(self.portal, TEST_USER_ID, ["Manager"])
 
         self.api_session = RelativeSession(self.portal_url)
         self.api_session.headers.update({"Accept": "application/json"})
         self.api_session.auth = (SITE_OWNER_NAME, SITE_OWNER_PASSWORD)
 
-        self.value = [
+        self.footer_columns_value = [
             {
                 "items": [
                     {"text": {"data": '<a href="https://site.com/">Link 1</a>'}},
@@ -42,7 +39,9 @@ class FooterColumnsEndpointTest(unittest.TestCase):
                 ]
             }
         ]
-        self.set_record_value(field="footer_columns", value=json.dumps(self.value))
+        self.set_record_value(
+            field="footer_columns", value=json.dumps(self.footer_columns_value)
+        )
 
     def tearDown(self):
         self.api_session.close()
@@ -51,24 +50,37 @@ class FooterColumnsEndpointTest(unittest.TestCase):
         api.portal.set_registry_record(field, value, interface=IEditableFooterSettings)
         commit()
 
+
+class EditableFooterDataServiceTest(BaseTest):
+    layer = VOLTO_EDITABLEFOOTER_API_FUNCTIONAL_TESTING
+
     def test_route_exists(self):
         response = self.api_session.get("/@footer-columns")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.headers.get("Content-Type"), "application/json")
 
-    def test_return_json_data(self):
+    def test_return_data_structure(self):
+        response = self.api_session.get("/@footer-columns")
+        result = response.json()
+
+        self.assertIn("footer_top", result)
+        self.assertIn("footer_columns", result)
+
+    def test_return_json_data_absolute_links_converted_for_footer_columns(self):
         response = self.api_session.get("/@footer-columns")
         self.assertEqual(response.status_code, 200)
         result = response.json()
-        # self.value has relative links, but the result should have absolute links
-        self.assertNotEqual(result, self.value)
+        # self.footer_columns_value has relative links, but the result should have absolute links
+        self.assertNotEqual(result["footer_columns"], self.footer_columns_value)
         self.assertEqual(
-            json.dumps(result),
-            json.dumps(self.value).replace('href=\\"/', f'href=\\"{self.portal_url}/'),
+            json.dumps(result["footer_columns"]),
+            json.dumps(self.footer_columns_value).replace(
+                'href=\\"/', f'href=\\"{self.portal_url}/'
+            ),
         )
 
 
-class FooterColumnsEndpointTestWithPloneVolto(FooterColumnsEndpointTest):
+class EditableFooterDataServiceTestWithPloneVolto(BaseTest):
     layer = VOLTO_EDITABLEFOOTER_API_FUNCTIONAL_TESTING
 
     def setUp(self):
@@ -81,11 +93,13 @@ class FooterColumnsEndpointTestWithPloneVolto(FooterColumnsEndpointTest):
         response = self.api_session.get("/@footer-columns")
         self.assertEqual(response.status_code, 200)
         result = response.json()
-        # self.value has relative links, but the result should have absolute links
-        self.assertNotEqual(result, self.value)
+        # self.footer_columns_value has relative links, but the result should have absolute links
+        self.assertNotEqual(result["footer_columns"], self.footer_columns_value)
         self.assertEqual(
-            json.dumps(result),
-            json.dumps(self.value).replace('href=\\"/', f'href=\\"{self.portal_url}/'),
+            json.dumps(result["footer_columns"]),
+            json.dumps(self.footer_columns_value).replace(
+                'href=\\"/', f'href=\\"{self.portal_url}/'
+            ),
         )
 
     def test_return_json_data_with_frontend_domain_if_set(self):
@@ -99,11 +113,11 @@ class FooterColumnsEndpointTestWithPloneVolto(FooterColumnsEndpointTest):
         response = self.api_session.get("/@footer-columns")
         self.assertEqual(response.status_code, 200)
         result = response.json()
-        # self.value has relative links, but the result should have absolute links
-        self.assertNotEqual(result, self.value)
+        # self.footer_columns_value has relative links, but the result should have absolute links
+        self.assertNotEqual(result["footer_columns"], self.footer_columns_value)
         self.assertEqual(
-            json.dumps(result),
-            json.dumps(self.value).replace(
+            json.dumps(result["footer_columns"]),
+            json.dumps(self.footer_columns_value).replace(
                 'href=\\"/', f'href=\\"{settings.frontend_domain}/'
             ),
         )

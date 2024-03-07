@@ -5,7 +5,8 @@ Changelog
 1.2.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add footer_top field in settings, to manage a new footer row before columns.
+  [cekk]
 
 
 1.2.1 (2024-01-17)

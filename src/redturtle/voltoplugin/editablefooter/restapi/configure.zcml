@@ -23,14 +23,14 @@
   <!-- endpoint to get footer data -->
   <plone:service
       method="GET"
-      factory=".get.FooterColumns"
+      factory=".get.EditableFooterGet"
       for="Products.CMFCore.interfaces.ISiteRoot"
       permission="zope2.View"
       name="@footer-columns"
       />
 
   <cache:ruleset
-      for=".get.FooterColumns"
+      for=".get.EditableFooterGet"
       ruleset="plone.content.dynamic"
       />
 </configure>
