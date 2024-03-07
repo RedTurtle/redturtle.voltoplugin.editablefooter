@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.2.2 (unreleased)
+1.3.0 (2024-03-07)
 ------------------
 
 - Add footer_top field in settings, to manage a new footer row before columns.
