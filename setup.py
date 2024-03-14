@@ -16,7 +16,7 @@ long_description = "\n\n".join(
 
 setup(
     name="redturtle.voltoplugin.editablefooter",
-    version="1.3.2",
+    version="1.3.3.dev0",
     description="Add-on for Volto to manage four-columns footer",
     long_description=long_description,
     # Get more from https://pypi.org/classifiers/
