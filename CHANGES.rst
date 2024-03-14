@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.3.2 (unreleased)
+1.3.2 (2024-03-14)
 ------------------
 
 - Revert changes to 1.2.1 branch. We haven't deleted 1.3.0 and 1.3.1 branches because there are some releases on pypi.
