@@ -1,6 +1,11 @@
 Changelog
 =========
 
+1.2.2 (unreleased)
+------------------
+
+- Nothing changed yet.
+  [cekk]
 
 1.2.1 (2024-01-17)
 ------------------
