@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.3.1 (unreleased)
+1.3.1 (2024-03-14)
 ------------------
 
 - Handle missing record in restapi endpoint.
