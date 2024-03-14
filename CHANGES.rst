@@ -1,10 +1,23 @@
 Changelog
 =========
 
-1.2.2 (unreleased)
+1.3.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Revert changes to 1.2.1 branch. We haven't deleted 1.3.0 and 1.3.1 branches because there are some releases on pypi.
+  [cekk]
+
+1.3.1 (2024-03-14)
+------------------
+
+- Handle missing record in restapi endpoint.
+  [cekk]
+
+
+1.3.0 (2024-03-07)
+------------------
+
+- Add footer_top field in settings, to manage a new footer row before columns.
   [cekk]
 
 1.2.1 (2024-01-17)
