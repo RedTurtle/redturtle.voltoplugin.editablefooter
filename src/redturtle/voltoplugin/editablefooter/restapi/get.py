@@ -23,12 +23,15 @@ import json
 class EditableFooterGet(Service):
     def reply(self):
         res = {"footer_top": None, "footer_columns": None}
-        footer_top = api.portal.get_registry_record(
-            "footer_top", interface=IEditableFooterSettings, default=""
-        )
         footer_columns = api.portal.get_registry_record(
             "footer_columns", interface=IEditableFooterSettings, default=""
         )
+        try:
+            footer_top = api.portal.get_registry_record(
+                "footer_top", interface=IEditableFooterSettings, default=""
+            )
+        except KeyError:
+            footer_top = ""
         if footer_top:
             res["footer_top"] = json.loads(footer_top)
         if not footer_columns:

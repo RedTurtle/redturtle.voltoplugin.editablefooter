@@ -5,7 +5,8 @@ Changelog
 1.3.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Handle missing record in restapi endpoint.
+  [cekk]
 
 
 1.3.0 (2024-03-07)
