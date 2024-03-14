@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-01-31 11:22+0000\n"
+"POT-Creation-Date: 2020-10-08 14:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,48 +18,38 @@ msgstr ""
 msgid "Editable footer settings"
 msgstr "Impostazioni footer"
 
-#: redturtle/voltoplugin/editablefooter/configure.zcml:31
+#: redturtle/voltoplugin/editablefooter/configure.zcml:28
 msgid "Installs the redturtle.voltoplugin.editablefooter add-on."
 msgstr "Installa redturtle.voltoplugin.editablefooter"
 
-#: redturtle/voltoplugin/editablefooter/configure.zcml:40
+#: redturtle/voltoplugin/editablefooter/configure.zcml:37
 msgid "Uninstalls the redturtle.voltoplugin.editablefooter add-on."
 msgstr "Disinstalla redturtle.voltoplugin.editablefooter"
 
-#: redturtle/voltoplugin/editablefooter/configure.zcml:31
-msgid "Volto Editable Footer"
-msgstr "Volto Editable Footer"
-
-#: redturtle/voltoplugin/editablefooter/configure.zcml:40
-msgid "Volto Editable Footer (uninstall)"
-msgstr "Volto Editable Footer (uninstall"
-
 #. Default: "Set infos for columns in footer."
-#: redturtle/voltoplugin/editablefooter/browser/controlpanel.py:12
+#: redturtle/voltoplugin/editablefooter/browser/controlpanel.py:13
 msgid "editable_footer_settings_help"
 msgstr "Imposta i dati per le colonne del footer."
 
 #. Default: "Editable Footer Settings"
-#: redturtle/voltoplugin/editablefooter/browser/controlpanel.py:11
+#: redturtle/voltoplugin/editablefooter/browser/controlpanel.py:10
 msgid "editable_footer_settings_label"
 msgstr "Impostazioni footer"
 
 #. Default: "Set a list of custom columns for the footer. You can have different sets for each portal's languages."
-#: redturtle/voltoplugin/editablefooter/interfaces.py:24
+#: redturtle/voltoplugin/editablefooter/interfaces.py:15
 msgid "footer_columns_help"
 msgstr "Configura una serie di colonne per il footer. Puoi creare differenti impostazioni per le varie lingue del sito."
 
 #. Default: "Footer columns"
-#: redturtle/voltoplugin/editablefooter/interfaces.py:23
+#: redturtle/voltoplugin/editablefooter/interfaces.py:14
 msgid "footer_columns_label"
 msgstr "Colonne footer"
 
-#. Default: "Insert some text that will be shown as first element in the footer, before the columns."
-#: redturtle/voltoplugin/editablefooter/interfaces.py:15
-msgid "footer_top_help"
-msgstr "Inserisci del testo che apparirà come primo elemento nel footer, sopra alle colonne."
+#: redturtle/voltoplugin/editablefooter/configure.zcml:28
+msgid "redturtle.voltoplugin.editablefooter"
+msgstr ""
 
-#. Default: "Footer top"
-#: redturtle/voltoplugin/editablefooter/interfaces.py:14
-msgid "footer_top_label"
-msgstr "Testata del footer"
+#: redturtle/voltoplugin/editablefooter/configure.zcml:37
+msgid "redturtle.voltoplugin.editablefooter (uninstall)"
+msgstr ""

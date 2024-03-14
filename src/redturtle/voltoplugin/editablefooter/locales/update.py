@@ -7,7 +7,7 @@ import subprocess
 
 domain = "redturtle.voltoplugin.editablefooter"
 os.chdir(pkg_resources.resource_filename(domain, ""))
-os.chdir("../../../../")
+os.chdir("../../../")
 target_path = "src/redturtle/voltoplugin/editablefooter/"
 locale_path = target_path + "locales/"
 i18ndude = "./bin/i18ndude"
@@ -31,7 +31,7 @@ def locale_folder_setup():
             )
             subprocess.call(cmd, shell=True)
 
-    os.chdir("../../../../../")
+    os.chdir("../../../../")
 
 
 def _rebuild():
