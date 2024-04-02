@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 from plone.app.registry.browser import controlpanel
-from redturtle.voltoplugin.editablefooter.interfaces import (
-    IEditableFooterSettings,
-)
 from redturtle.voltoplugin.editablefooter import _
+from redturtle.voltoplugin.editablefooter.interfaces import IEditableFooterSettings
 
 
 class EditableFooterForm(controlpanel.RegistryEditForm):

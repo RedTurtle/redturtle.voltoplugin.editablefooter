@@ -14,7 +14,6 @@ from redturtle.voltoplugin.editablefooter.testing import (
 from transaction import commit
 from zope.component import getUtility
 
-
 import json
 import unittest
 
@@ -44,6 +43,11 @@ class FooterColumnsEndpointTest(unittest.TestCase):
         ]
         self.set_record_value(field="footer_columns", value=json.dumps(self.value))
 
+        self.document = api.content.create(
+            container=self.portal, type="Document", title="document"
+        )
+        commit()
+
     def tearDown(self):
         self.api_session.close()
 
@@ -65,6 +69,49 @@ class FooterColumnsEndpointTest(unittest.TestCase):
         self.assertEqual(
             json.dumps(result),
             json.dumps(self.value).replace('href=\\"/', f'href=\\"{self.portal_url}/'),
+        )
+
+    def test_return_expanded_resolveuid_in_footerTop_internal_links(self):
+        data = [
+            {
+                "footerTop": {
+                    "blocks": {
+                        "2955de0f-ea5e-475f-8efd-34c7060b99b9": {
+                            "@type": "slate",
+                            "plaintext": " link ",
+                            "value": [
+                                {
+                                    "children": [
+                                        {
+                                            "type": "link",
+                                            "data": {
+                                                "url": self.document.absolute_url(),
+                                                "dataElement": "",
+                                            },
+                                            "children": [{"text": "link"}],
+                                        },
+                                    ],
+                                    "type": "p",
+                                }
+                            ],
+                        }
+                    },
+                    "blocks_layout": {
+                        "items": ["2955de0f-ea5e-475f-8efd-34c7060b99b9"]
+                    },
+                },
+                "rootPath": "/",
+            }
+        ]
+        self.set_record_value(field="footer_columns", value=json.dumps(data))
+
+        response = self.api_session.get("/@footer-columns").json()
+
+        self.assertEqual(
+            response[0]["footerTop"]["blocks"]["2955de0f-ea5e-475f-8efd-34c7060b99b9"][
+                "value"
+            ][0]["children"][0]["data"]["url"],
+            self.document.absolute_url(),
         )
 
 

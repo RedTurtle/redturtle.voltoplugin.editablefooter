@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from plone.restapi.controlpanels import RegistryConfigletPanel
+from redturtle.voltoplugin.editablefooter.interfaces import IEditableFooterSettings
 from redturtle.voltoplugin.editablefooter.interfaces import (
     IRedturtleVoltoEditablefooterLayer,
-    IEditableFooterSettings,
 )
 from zope.component import adapter
 from zope.interface import implementer

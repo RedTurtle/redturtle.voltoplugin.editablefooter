@@ -7,9 +7,9 @@ from plone.app.testing import PloneSandboxLayer
 from plone.restapi.testing import PloneRestApiDXLayer
 from plone.testing import z2
 
-import redturtle.voltoplugin.editablefooter
 import plone.restapi
 import plone.volto
+import redturtle.voltoplugin.editablefooter
 
 
 class VoltoEditableFooterLayer(PloneSandboxLayer):

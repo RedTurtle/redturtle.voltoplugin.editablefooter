@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
-from redturtle.voltoplugin.editablefooter.interfaces import (
-    IEditableFooterSettings,
-)
 from plone import api
 from plone.registry.interfaces import IRegistry
+from plone.restapi.interfaces import IBlockFieldSerializationTransformer
 from plone.restapi.services import Service
+from redturtle.voltoplugin.editablefooter.interfaces import IEditableFooterSettings
+from redturtle.voltoplugin.editablefooter.restapi import fix_footer_top_blocks
 from zope.component import getUtility
 from zope.interface import implementer
 from zope.publisher.interfaces import IPublishTraverse
+
 
 try:
     from plone.volto.interfaces import IVoltoSettings
@@ -34,6 +35,15 @@ class FooterColumns(Service):
         portal_url = self.get_portal_url()
         for el in data or []:
             if isinstance(el, dict):
+
+                footer_top = el.get("footerTop", {}).get("blocks", {})
+                if footer_top:
+                    el["footerTop"]["blocks"] = fix_footer_top_blocks(
+                        context=self.context,
+                        blocks=footer_top,
+                        transformer=IBlockFieldSerializationTransformer,
+                    )
+
                 for item in el.get("items") or []:
                     if (
                         isinstance(item, dict)

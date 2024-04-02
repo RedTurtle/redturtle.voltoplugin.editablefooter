@@ -4,7 +4,8 @@ Changelog
 1.3.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix serializer/deserializer for footerTop blocks: use blocks handlers to fix data.
+  [cekk]
 
 
 1.3.2 (2024-03-14)
