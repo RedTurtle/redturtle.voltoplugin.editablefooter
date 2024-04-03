@@ -2,6 +2,7 @@
 from plone import api
 from plone.registry.interfaces import IRegistry
 from plone.restapi.interfaces import IBlockFieldSerializationTransformer
+from plone.restapi.serializer.converters import json_compatible
 from plone.restapi.services import Service
 from redturtle.voltoplugin.editablefooter.interfaces import IEditableFooterSettings
 from redturtle.voltoplugin.editablefooter.restapi import fix_footer_top_blocks
@@ -22,8 +23,6 @@ import json
 
 @implementer(IPublishTraverse)
 class FooterColumns(Service):
-    def __init__(self, context, request):
-        super(FooterColumns, self).__init__(context, request)
 
     def reply(self):
         record = api.portal.get_registry_record(
@@ -54,7 +53,7 @@ class FooterColumns(Service):
                         item["text"]["data"] = item["text"]["data"].replace(
                             'href="/', f'href="{portal_url}/'
                         )
-        return data
+        return json_compatible(data)
 
     def get_portal_url(self):
         portal_url = api.portal.get().absolute_url()
