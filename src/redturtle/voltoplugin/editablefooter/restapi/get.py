@@ -23,7 +23,6 @@ import json
 
 @implementer(IPublishTraverse)
 class FooterColumns(Service):
-
     def reply(self):
         record = api.portal.get_registry_record(
             "footer_columns", interface=IEditableFooterSettings, default=""
@@ -34,7 +33,6 @@ class FooterColumns(Service):
         portal_url = self.get_portal_url()
         for el in data or []:
             if isinstance(el, dict):
-
                 footer_top = el.get("footerTop", {}).get("blocks", {})
                 if footer_top:
                     el["footerTop"]["blocks"] = fix_footer_top_blocks(
