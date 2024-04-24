@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
-from redturtle.voltoplugin.editablefooter.interfaces import (
-    IEditableFooterSettings,
-)
 from plone import api
 from plone.registry.interfaces import IRegistry
+from plone.restapi.interfaces import IBlockFieldSerializationTransformer
+from plone.restapi.serializer.converters import json_compatible
 from plone.restapi.services import Service
+from redturtle.voltoplugin.editablefooter.interfaces import IEditableFooterSettings
+from redturtle.voltoplugin.editablefooter.restapi import fix_footer_top_blocks
 from zope.component import getUtility
 from zope.interface import implementer
 from zope.publisher.interfaces import IPublishTraverse
+
 
 try:
     from plone.volto.interfaces import IVoltoSettings
@@ -21,9 +23,6 @@ import json
 
 @implementer(IPublishTraverse)
 class FooterColumns(Service):
-    def __init__(self, context, request):
-        super(FooterColumns, self).__init__(context, request)
-
     def reply(self):
         record = api.portal.get_registry_record(
             "footer_columns", interface=IEditableFooterSettings, default=""
@@ -34,6 +33,14 @@ class FooterColumns(Service):
         portal_url = self.get_portal_url()
         for el in data or []:
             if isinstance(el, dict):
+                footer_top = el.get("footerTop", {}).get("blocks", {})
+                if footer_top:
+                    el["footerTop"]["blocks"] = fix_footer_top_blocks(
+                        context=self.context,
+                        blocks=footer_top,
+                        transformer=IBlockFieldSerializationTransformer,
+                    )
+
                 for item in el.get("items") or []:
                     if (
                         isinstance(item, dict)
@@ -44,7 +51,7 @@ class FooterColumns(Service):
                         item["text"]["data"] = item["text"]["data"].replace(
                             'href="/', f'href="{portal_url}/'
                         )
-        return data
+        return json_compatible(data)
 
     def get_portal_url(self):
         portal_url = api.portal.get().absolute_url()
