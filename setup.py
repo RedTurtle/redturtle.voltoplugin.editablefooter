@@ -52,8 +52,7 @@ setup(
     install_requires=[
         "setuptools",
         "plone.api >= 1.8.4",
-        "plone.restapi",
-        "plone.app.dexterity",
+        "plone.restapi>=9.5.0",
         "plone.volto",
     ],
     extras_require={
