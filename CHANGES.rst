@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.3.3 (unreleased)
+1.3.3 (2024-04-24)
 ------------------
 
 - Fix serializer/deserializer for footerTop blocks: use blocks handlers to fix data.
