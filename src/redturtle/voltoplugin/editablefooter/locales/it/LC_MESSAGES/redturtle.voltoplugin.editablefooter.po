@@ -16,7 +16,7 @@ msgstr ""
 
 #: redturtle/voltoplugin/editablefooter/profiles/default/controlpanel.xml
 msgid "Editable footer settings"
-msgstr "Impostazioni footer"
+msgstr "Footer configurabile"
 
 #: redturtle/voltoplugin/editablefooter/configure.zcml:28
 msgid "Installs the redturtle.voltoplugin.editablefooter add-on."
@@ -34,7 +34,7 @@ msgstr "Imposta i dati per le colonne del footer."
 #. Default: "Editable Footer Settings"
 #: redturtle/voltoplugin/editablefooter/browser/controlpanel.py:10
 msgid "editable_footer_settings_label"
-msgstr "Impostazioni footer"
+msgstr "Footer configurabile"
 
 #. Default: "Set a list of custom columns for the footer. You can have different sets for each portal's languages."
 #: redturtle/voltoplugin/editablefooter/interfaces.py:15
