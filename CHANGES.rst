@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.3.4 (unreleased)
+1.3.4 (2024-12-12)
 ------------------
 
 - Fix it translations
