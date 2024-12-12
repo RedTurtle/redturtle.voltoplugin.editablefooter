@@ -16,7 +16,7 @@ msgstr ""
 
 #: redturtle/voltoplugin/editablefooter/profiles/default/controlpanel.xml
 msgid "Editable footer settings"
-msgstr "Footer configurabile"
+msgstr "Footer principale"
 
 #: redturtle/voltoplugin/editablefooter/configure.zcml:28
 msgid "Installs the redturtle.voltoplugin.editablefooter add-on."
