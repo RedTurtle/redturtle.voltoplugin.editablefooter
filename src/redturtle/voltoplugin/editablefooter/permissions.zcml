@@ -5,9 +5,10 @@
     >
 
   <configure zcml:condition="installed AccessControl.security">
-    <!-- -*- extra stuff goes here -*- -->
-
-
+    <permission
+        id="redturtle.voltoplugin.editablefooter.ManageSettings"
+        title="redturtle.voltoplugin.editablefooter: ManageSettings"
+        />
   </configure>
 
 </configure>

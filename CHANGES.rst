@@ -4,7 +4,8 @@ Changelog
 1.3.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Changed control panel for site administrator permissions
+   [simone]
 
 
 1.3.4 (2024-12-12)

@@ -18,6 +18,7 @@
       factory=".controlpanel.EditableFooterControlpanel"
       provides="redturtle.voltoplugin.editablefooter.interfaces.IEditableFooterSettings"
       name="editable-footer-settings"
+      permission="redturtle.voltoplugin.editablefooter.ManageSettings"
       />
 
   <!-- endpoint to get footer data -->
