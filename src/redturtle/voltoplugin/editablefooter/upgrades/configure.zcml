@@ -1,0 +1,20 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:gs="http://namespaces.zope.org/genericsetup"
+    >
+
+  <gs:upgradeSteps
+      profile="redturtle.voltoplugin.editablefooter:default"
+      source="*"
+      destination="1001"
+      >
+
+    <gs:upgradeStep
+        title="Use dedicated permission for EditableFooter control panel"
+        description="Update controlpanel and rolemap to use a package-specific permission"
+        handler=".upgrades.to_1001"
+        />
+
+  </gs:upgradeSteps>
+
+</configure>

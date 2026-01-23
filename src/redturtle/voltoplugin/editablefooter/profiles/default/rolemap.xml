@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 <rolemap>
   <permissions>
-  <!-- -*- extra stuff goes here -*- -->
-
+    <permission name="redturtle.voltoplugin.editablefooter: ManageSettings" acquire="True">
+      <role name="Manager"/>
+      <role name="Site Administrator"/>
+    </permission>
   </permissions>
 </rolemap>

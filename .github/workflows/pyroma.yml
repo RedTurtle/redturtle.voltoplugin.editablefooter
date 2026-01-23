@@ -6,7 +6,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: [3.8]
+        python-version: [3.11]
 
     steps:
       # git checkout
@@ -19,7 +19,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       # python cache
-      - uses: actions/cache@v1
+      - uses: actions/cache@v3
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
