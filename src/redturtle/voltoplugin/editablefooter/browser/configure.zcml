@@ -9,7 +9,7 @@
       name="editable-footer-settings"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       class=".controlpanel.EditableFooter"
-      permission="cmf.ManagePortal"
+      permission="redturtle.voltoplugin.editablefooter.ManageSettings"
       layer="redturtle.voltoplugin.editablefooter.interfaces.IRedturtleVoltoEditablefooterLayer"
       />
 

@@ -4,7 +4,10 @@ Changelog
 2.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix browser view permission for the control panel: it was still guarded by
+  ``cmf.ManagePortal``, so Site Administrators could not open it even though
+  the control panel action was already updated.
+  [mamico]
 
 
 2.0.0 (2026-01-23)
